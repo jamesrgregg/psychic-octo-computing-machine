@@ -31,6 +31,7 @@ podTemplate(label: 'mypod', containers: [
                     sh 'hostname'
                     sh 'hostname -i'
                     sh 'mvn clean install'
+                    sh 'mvn clean test'
                 }
             }
         }
