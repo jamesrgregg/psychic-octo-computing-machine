@@ -35,5 +35,19 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
+
+        stage('Generate Reports') {
+            container('maven') {
+                dir('hello-world-war/') {
+                    allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                    ])
+            }
+            }
+        }
     }
 }
